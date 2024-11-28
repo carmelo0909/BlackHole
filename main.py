@@ -1,11 +1,23 @@
-import requests
-from bs4 import BeautifulSoup
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.chrome.options import Options
 
-keyword = input("Search: ")
-URL = "https://en.wikipedia.org/wiki/"
-r = requests.get(URL + keyword)
+chrome_options = Options()
+chrome_options.add_experimental_option("detach", True)
 
-soup = BeautifulSoup(r.content, 'html5lib') # If this line causes an error, run 'pip install html5lib' or install html5lib
-p1 = soup.select("#mw-content-text > div.mw-content-ltr.mw-parser-output > p:nth-child(7)")
-print(f"Judul: {soup.title.string}")
-print(p1)
+driver = webdriver.Chrome(options=chrome_options)
+driver.get("https://ertech.id/followers-instagram-gratis/")
+
+username = driver.find_element(By.ID, value="username_ig")
+username.send_keys("sunwukong0909")
+
+password = driver.find_element(By.ID, value="password_ig")
+password.send_keys("AkuTestingPython")
+
+login_button = driver.find_element(By.ID, value="ig_login_btn")
+login_button.click()
+
+
+# driver.quit()
