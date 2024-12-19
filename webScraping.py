@@ -33,7 +33,7 @@ def display_commands(message):
 
 
 
-@bot.message_handler(regexp='\/search \w+')
+@bot.message_handler(regexp='/\/search \w+/')
 def ask_anime(message):
 	search = str(message.text)
 	search = search.replace("/search", "")
